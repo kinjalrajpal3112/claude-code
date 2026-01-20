@@ -1,0 +1,67 @@
+Current Problem: The frontend is calling /api/bzwebsite/GetCartItems (which doesn't exist), causing 404 errors. It should call /api/cart instead. This is why cart items aren't showing up.
+
+Agromatic Changes to be Done :
+1) When user clicks on Product (Add to Cart) it should be added in my cart 
+2) Overall whole backend and frontend integrated in such a way that runs smoothly on deployment for large number of users.
+
+List of APIs that are working correctly and needs to be integrated here according to the features
+
+Below is the list of all api's we are using in our new website.
+
+Product Management (6 endpoints)
+https://behtarzindagi.in/BZFarmerApp_Live/api/Home/GetAllProducts - Get all products
+https://behtarzindagi.in/BZFarmerApp_Live/api/Category/Get_MainCategory - Get main categories
+https://behtarzindagi.in/BZFarmerApp_Live/api/home/GetBZProductDetails - Get product details
+https://behtarzindagi.in/BZFarmerApp_Live/api/Home/GetRelatedProducts - Get related products
+https://behtarzindagi.in/BZFarmerApp_Live/api/Livestock/GetProductsByPriceRange - Search by price range
+https://behtarzindagi.in/BZFarmerApp_Live/api/BzCommonApi/GetBzShortVideosURLs - Get short videos
+
+
+Cart Management (2 endpoints)
+https://behtarzindagi.in/BZFarmerApp_Live/api/BzWebsite/GetCartItems - Get cart items
+https://behtarzindagi.in/BZFarmerApp_Live/api/BzWebsite/AddToCartItems - Add/Remove from cart
+
+Order Management (5 endpoints)
+https://behtarzindagi.in/BZFarmerApp_Live/api/LiveStock/OrderCreateWebAddToCart - Create order
+https://behtarzindagi.in/BZFarmerApp_Live/api/Home/Get_OrderHistory - Get order history
+https://behtarzindagi.in/BZFarmerApp_Live/api/Home/OrderStatus - Get order status
+https://behtarzindagi.in/BZFarmerApp_Live/api/Home/UpdateOrderStatusAfterPaymentGetway - Update order status
+https://behtarzindagi.in/BZFarmerApp_Live/api/Home/CancelReason - Cancel order
+
+Payment Management (2 endpoints)
+https://behtarzindagi.in/Tractor_Api_Test/api/Payments/ToAcceptCustomerPaymentRequest - Accept payment
+https://behtarzindagi.in/Tractor_Api_Test/api/Payments/ToCompletePaymentRequest - Complete payment
+
+
+Farmer & Location (3 endpoints)
+https://behtarzindagi.in/BZFarmerApp_Live/api/Home/GetFarmerAddress - Get farmer address
+https://behtarzindagi.in/bz_FarmerApp/ProductDetail.svc/api/UpdateFarmerData - Update farmer data
+https://behtarzindagi.in/bz_FarmerApp/ProductDetail.svc/api/GetStateDistrictBlockVilage - Get location data
+
+
+Coupons & Cancel Reasons (2 endpoints)
+https://behtarzindagi.in/BZFarmerApp_Live/api/Home/GetAllActiveCoupons - Get active coupons
+https://behtarzindagi.in/BZFarmerApp_Live/api/Home/ProductCancelStatus - Get cancel reasons
+
+
+Partner Orders (1 endpoint)
+https://behtarzindagi.in/Tractor_Api_Test/api/Partnership/ToMapPartnerOrderDetailsThirdPartyUserId - Map partner order
+
+
+OTP Authentication (2 endpoints)
+https://behtarzindagi.in/Tractor_Api_Test/api/Home/CentraliseLogin - Send OTP
+https://behtarzindagi.in/Tractor_Api_Test/api/Home/CentraliseVerifyLogin - Verify OTP
+
+
+ Others
+https://behtarzindagi.in/BZFarmerApp_Live/api/Livestock/GetProductsByPriceRange?SearchText=Milkogen&MinPrice=0&MaxPrice=0&MobNo=9871560356&DeviceId=null
+
+https://behtarzindagi.in/BZFarmerApp_Live/api/Home/GetAllProductsByCatogory
+Payload:
+{"PageIndex": 1, "PageSize": 12, "CategoryId": "26"}
+
+Price filtering Api within price range, plz check
+
+https://behtarzindagi.in/BzFarmerApp_Live/api/Livestock/GetProductsByPriceRange?SearchText=milking&MinPrice=7000&MaxPrice=10000
+
+
