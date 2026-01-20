@@ -1,0 +1,408 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* BZ Brand Colors */
+  --bz-primary: #059669;
+  --bz-primary-dark: #047857;
+  --bz-primary-light: #d1fae5;
+  --bz-secondary: #f59e0b;
+  --bz-secondary-dark: #d97706;
+  --bz-secondary-light: #fef3c7;
+  --bz-danger: #ef4444;
+  
+  /* Layout */
+  --nav-height: 64px;
+  --header-height: 56px;
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+  background: #f5f5f5;
+  color: #1e293b;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Hide scrollbar for horizontal scrolling containers */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Ensure horizontal scroll containers don't block clicks */
+.hide-scrollbar > * {
+  flex-shrink: 0;
+  touch-action: pan-y;
+}
+
+/* ===== UTILITY CLASSES ===== */
+
+/* Page with bottom navigation */
+.page-with-nav {
+  padding-bottom: calc(var(--nav-height) + var(--safe-area-bottom) + 20px);
+}
+
+/* Page with sticky CTA */
+.page-with-cta {
+  padding-bottom: calc(var(--nav-height) + var(--safe-area-bottom) + 80px);
+}
+
+/* BZ Button Styles */
+.btn-bz-primary {
+  @apply bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-semibold rounded-xl transition-all duration-200;
+}
+
+.btn-bz-secondary {
+  @apply bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-white font-semibold rounded-xl transition-all duration-200;
+}
+
+.btn-bz-outline {
+  @apply border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 active:bg-emerald-100 font-semibold rounded-xl transition-all duration-200;
+}
+
+/* Card Styles */
+.card-bz {
+  @apply bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200;
+}
+
+/* Section Title */
+.section-title-bz {
+  @apply text-lg font-bold text-gray-900 flex items-center gap-2;
+}
+
+/* Price Styles */
+.price-bz {
+  @apply text-emerald-700 font-bold;
+}
+
+.price-mrp {
+  @apply text-gray-400 line-through text-sm;
+}
+
+.discount-badge {
+  @apply bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded;
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from { 
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s ease-out;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.3s ease-out;
+}
+
+/* Skeleton Loading */
+.skeleton {
+  @apply bg-gray-200 animate-pulse rounded;
+}
+
+/* ===== FORM STYLES ===== */
+
+.input-bz {
+  @apply w-full px-4 py-3 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200;
+}
+
+/* ===== SAFE AREA ===== */
+
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* ===== CUSTOM COMPONENTS ===== */
+
+/* Hero Cards */
+.hero-card {
+  @apply rounded-2xl p-4 text-white relative overflow-hidden transition-transform duration-200 active:scale-95;
+}
+
+.hero-card-primary {
+  background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+}
+
+.hero-card-secondary {
+  background: linear-gradient(135deg, #7c2d12 0%, #c2410c 100%);
+}
+
+/* Combo Card */
+.combo-card {
+  @apply bg-white rounded-2xl overflow-hidden shadow-sm min-w-[260px] max-w-[260px];
+  display: block;
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.combo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.combo-card:active {
+  transform: scale(0.98);
+}
+
+.combo-banner {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  @apply text-white px-3 py-2 flex justify-between items-center text-sm font-bold;
+}
+
+/* Product Card */
+.product-card {
+  @apply bg-white rounded-xl overflow-hidden shadow-sm min-w-[150px] max-w-[150px];
+  display: block;
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.product-card:active {
+  transform: scale(0.98);
+}
+
+/* Category Icon */
+.cat-icon {
+  @apply w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center text-2xl transition-transform duration-200 active:scale-95;
+}
+
+/* Category/Machine Card Link */
+a[href*="/catalog"] {
+  display: block;
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+}
+
+/* Business Card */
+.business-card {
+  @apply bg-white rounded-xl p-4 text-center shadow-sm min-w-[140px] transition-transform duration-200 active:scale-95;
+  display: block;
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.business-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Trust Badge */
+.trust-badge {
+  @apply text-center;
+}
+
+.trust-badge-icon {
+  @apply text-2xl mb-1;
+}
+
+.trust-badge-text {
+  @apply text-xs text-gray-500 leading-tight;
+}
+
+/* Video Card (BZ TV) */
+.video-card {
+  display: block;
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.video-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.video-card:active {
+  transform: scale(0.98);
+}
+
+/* Video Card Links */
+a[href*="/video"] {
+  display: block;
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+}
+
+/* Ensure all Link elements are clickable */
+a[href] {
+  position: relative;
+  z-index: 1;
+  -webkit-tap-highlight-color: rgba(5, 150, 105, 0.2);
+  tap-highlight-color: rgba(5, 150, 105, 0.2);
+}
+
+/* Prevent any parent from blocking clicks */
+section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure cards are above any potential overlays */
+.combo-card,
+.product-card,
+.business-card,
+.video-card,
+a[href*="/catalog"],
+a[href*="/combo"],
+a[href*="/video"] {
+  pointer-events: auto !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ===== BOTTOM NAVIGATION ===== */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  padding-bottom: env(safe-area-inset-bottom);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid #e2e8f0;
+  z-index: 100;
+}
+
+.nav-item {
+  @apply flex flex-col items-center gap-1 py-2 px-3 rounded-lg text-gray-500 transition-all duration-200;
+}
+
+.nav-item.active {
+  @apply text-emerald-600;
+}
+
+.nav-item:hover {
+  @apply bg-emerald-50 text-emerald-600;
+}
+
+/* ===== WHATSAPP FLOAT ===== */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: calc(var(--nav-height) + env(safe-area-inset-bottom) + 16px);
+  right: 16px;
+  width: 52px;
+  height: 52px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+  z-index: 90;
+  transition: transform 0.2s;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+.whatsapp-float:active {
+  transform: scale(0.95);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (min-width: 768px) {
+  .bottom-nav {
+    display: none;
+  }
+  
+  .page-with-nav {
+    padding-bottom: 20px;
+  }
+  
+  .whatsapp-float {
+    bottom: 24px;
+  }
+}
